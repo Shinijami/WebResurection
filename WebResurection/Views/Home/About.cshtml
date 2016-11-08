@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebResurection.ViewModels.EnrollmentDateGroup>
+
+@{
+    ViewBag.Title = "Accounts created per date";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table>
+    <tr>
+        <th>
+            Join Date
+        </th>
+        <th>
+            Players
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+            <td>
+                @item.PlayerCount
+            </td>
+        </tr>
+    }
+</table>

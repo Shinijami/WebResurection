@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResurection", "WebResurection\WebResurection.csproj", "{F784209E-0DF2-42EC-BFAB-C0238E11D528}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResurection.Tests", "WebResurection.Tests\WebResurection.Tests.csproj", "{2B3DED27-40C8-40B8-8EF1-E49E75372F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResurection.Domain", "WebResurection.Domain\WebResurection.Domain.csproj", "{6B0050A3-6276-4570-8F77-E778BA6D9D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResurection.Repositories.EF", "WebResurection.Repositories.EF\WebResurection.Repositories.EF.csproj", "{D880E376-FAEA-46AA-8317-055FC028F532}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F784209E-0DF2-42EC-BFAB-C0238E11D528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F784209E-0DF2-42EC-BFAB-C0238E11D528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F784209E-0DF2-42EC-BFAB-C0238E11D528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F784209E-0DF2-42EC-BFAB-C0238E11D528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B3DED27-40C8-40B8-8EF1-E49E75372F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B3DED27-40C8-40B8-8EF1-E49E75372F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B3DED27-40C8-40B8-8EF1-E49E75372F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B3DED27-40C8-40B8-8EF1-E49E75372F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0050A3-6276-4570-8F77-E778BA6D9D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0050A3-6276-4570-8F77-E778BA6D9D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0050A3-6276-4570-8F77-E778BA6D9D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0050A3-6276-4570-8F77-E778BA6D9D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D880E376-FAEA-46AA-8317-055FC028F532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D880E376-FAEA-46AA-8317-055FC028F532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D880E376-FAEA-46AA-8317-055FC028F532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D880E376-FAEA-46AA-8317-055FC028F532}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

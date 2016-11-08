@@ -1,0 +1,66 @@
+﻿@model WebResurection.Domain.Model.Characters.Character
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthPoints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Damage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Damage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImplementedStats)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Skill</th>
+                    <th>Description</th>
+                </tr>
+                @foreach (var stat in Model.ImplementedStats)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => stat.Stat.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => stat.Stat.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => stat.Value)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
