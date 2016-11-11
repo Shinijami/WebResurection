@@ -12,6 +12,7 @@ namespace WebResurection.Domain.Model.Characters
         //public double HealthPoints { get; set; }
         //public double Damage { get; set; }
         public string PlayerString { get; set; } = "I'm a Player";
+        public string Difficulty { get; set; }
 
         public int CharacterId { get; set; }
         public virtual Character Character { get; set; }

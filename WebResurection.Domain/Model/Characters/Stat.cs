@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebResurection.Domain.Model.Characters
 {
+   
     public class Stat : Entity<int>
     {
         //I need to assign an inteface to players and NPC's 

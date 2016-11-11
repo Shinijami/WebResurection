@@ -188,6 +188,10 @@
     <Compile Include="Migrations\201610300715355_Init.Designer.cs">
       <DependentUpon>201610300715355_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611110528194_PlayerDifficulty.cs" />
+    <Compile Include="Migrations\201611110528194_PlayerDifficulty.Designer.cs">
+      <DependentUpon>201611110528194_PlayerDifficulty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="ViewModels\EnrollmentDateGroup.cs" />
@@ -298,6 +302,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610300715355_Init.resx">
       <DependentUpon>201610300715355_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611110528194_PlayerDifficulty.resx">
+      <DependentUpon>201611110528194_PlayerDifficulty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
