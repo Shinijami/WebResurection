@@ -244,15 +244,16 @@ namespace WebResurection.Controllers
 
         public ActionResult Hard(Player player)
         {
+            Random rnd = new Random();
             foreach (var stat in db.Stats)
             {
                 var impStat =  new ImplementedStat { Stat = stat, Modifier = 0, Value = 10, CreateDate = DateTime.Now, CharacterId = player.CharacterId };
                 if (threeDSix.Contains(stat.Name.ToUpper()))
-                    impStat.Value = Roll3D6();
+                    impStat.Value = Roll3D6(rnd);
                 else if (twoDSixPlusSix.Contains(stat.Name.ToUpper()))
-                    impStat.Value = Roll2D6Plus6();
+                    impStat.Value = Roll2D6Plus6(rnd);
                 else if (threeDSixPlusThree.Contains(stat.Name.ToUpper()))
-                    impStat.Value = Roll3d6Plus3();
+                    impStat.Value = Roll3d6Plus3(rnd);
                 db.ImplementedStats.Add(impStat);
             }
             db.SaveChanges();
@@ -260,10 +261,9 @@ namespace WebResurection.Controllers
             return RedirectToAction("Index");
         }
 
-        private double Roll3d6Plus3()
+        private double Roll3d6Plus3(Random rnd)
         {
             int result;
-            Random rnd = new Random();
 
             result = rnd.Next(1, 7);
             result += rnd.Next(1, 7);
@@ -272,10 +272,9 @@ namespace WebResurection.Controllers
             return result;
         }
 
-        private double Roll2D6Plus6()
+        private double Roll2D6Plus6(Random rnd)
         {
             int result;
-            Random rnd = new Random();
 
             result = rnd.Next(1, 7);
             result += rnd.Next(1, 7);
@@ -283,10 +282,9 @@ namespace WebResurection.Controllers
             return result;
         }
 
-        private double Roll3D6()
+        private double Roll3D6(Random rnd)
         {
             int result;
-            Random rnd = new Random();
 
             result = rnd.Next(1, 7);
             result += rnd.Next(1, 7);
