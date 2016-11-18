@@ -26,7 +26,9 @@ namespace WebResurection.Controllers
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var players = from p in db.Characters
                           .Include(x => x.ImplementedStats)
-                          .Include(x => x.ImplementedStats) where p.isPlayer == true select p;
+                          .Include(x => x.ImplementedStats)
+                          where p.isPlayer == true
+                          select p;
 
             //If searchstring changes then go to the first page 
             if (searchString != null)
@@ -68,13 +70,13 @@ namespace WebResurection.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Player player = db.Players.Find(id);
-           
+
             //if (player == null)
             //{
             //    return HttpNotFound();
             //}
             Character character = db.Characters.Find(id);
-            
+
 
             if (!character.isPlayer)
             {
@@ -103,20 +105,11 @@ namespace WebResurection.Controllers
                 {
                     string difficulty = Request.Params["difficulty"];
 
-                    player.CreateDate = DateTime.Now;
-                    player.Character.CreateDate = DateTime.Now;
-                    player.Character.isPlayer = true;
-                    player.Difficulty = difficulty;
+                    player.Create(difficulty);
+                    player.Character.CreatePlayerStats(db.Stats.ToList(), player.Difficulty);
 
                     db.Players.Add(player);
                     db.SaveChanges();
-
-                    if(difficulty.ToUpper() == "EASY")
-                        return RedirectToAction("Easy", player);
-                    else if(difficulty.ToUpper() == "MEDIUM")
-                        return RedirectToAction("Medium", player);
-                    else if(difficulty.ToUpper() == "HARD")
-                        return RedirectToAction("Hard", player);
 
                     return RedirectToAction("Index");
                 }
@@ -228,68 +221,9 @@ namespace WebResurection.Controllers
             return RedirectToAction("Index");
         }
 
-        List<string> threeDSix = new List<string>(new string[] { "STRENGTH", "CONSTITUTION", "POWER", "DEXTERITY", "APPEARANCE" });
-        List<string> twoDSixPlusSix = new List<string> (new string[]{"SIZE", "INTELLIGENCE"});
-        List<string> threeDSixPlusThree = new List<string>(new string[] { "EDUCATION" });
-
-        public ActionResult Easy(Player player)
+        public ActionResult ReviewStats(Player player)
         {
             return RedirectToAction("Index");
-        }
-
-        public ActionResult Medium(Player player)
-        {
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Hard(Player player)
-        {
-            Random rnd = new Random();
-            foreach (var stat in db.Stats)
-            {
-                var impStat =  new ImplementedStat { Stat = stat, Modifier = 0, Value = 10, CreateDate = DateTime.Now, CharacterId = player.CharacterId };
-                if (threeDSix.Contains(stat.Name.ToUpper()))
-                    impStat.Value = Roll3D6(rnd);
-                else if (twoDSixPlusSix.Contains(stat.Name.ToUpper()))
-                    impStat.Value = Roll2D6Plus6(rnd);
-                else if (threeDSixPlusThree.Contains(stat.Name.ToUpper()))
-                    impStat.Value = Roll3d6Plus3(rnd);
-                db.ImplementedStats.Add(impStat);
-            }
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-
-        private double Roll3d6Plus3(Random rnd)
-        {
-            int result;
-
-            result = rnd.Next(1, 7);
-            result += rnd.Next(1, 7);
-            result += rnd.Next(1, 7);
-            result += 3;
-            return result;
-        }
-
-        private double Roll2D6Plus6(Random rnd)
-        {
-            int result;
-
-            result = rnd.Next(1, 7);
-            result += rnd.Next(1, 7);
-            result += 6;
-            return result;
-        }
-
-        private double Roll3D6(Random rnd)
-        {
-            int result;
-
-            result = rnd.Next(1, 7);
-            result += rnd.Next(1, 7);
-            result += rnd.Next(1, 7);
-            return result;
         }
 
         protected override void Dispose(bool disposing)

@@ -47,6 +47,7 @@
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Model\Characters\Character.cs" />
     <Compile Include="Model\Characters\iCharacter.cs" />
+    <Compile Include="Model\DiceRolls.cs" />
     <Compile Include="Model\iBuilding.cs" />
     <Compile Include="Model\Characters\ImplementedSkill.cs" />
     <Compile Include="Model\Characters\ImplementedStat.cs" />

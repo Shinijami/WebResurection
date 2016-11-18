@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WebResurection.Domain.Model.Characters
 {
-    public class Player : Entity<int>
+    public class Player : Entity<int>//, iCharacter//should this inherit from character?
     {
-        //public string Name { get; set; }
         //public double HealthPoints { get; set; }
         //public double Damage { get; set; }
         public string PlayerString { get; set; } = "I'm a Player";
@@ -19,5 +18,15 @@ namespace WebResurection.Domain.Model.Characters
 
         //public virtual ICollection<ImplementedSkill> ImplementedSkills { get; set; }
         //public virtual ICollection<ImplementedStat> ImplementedStats { get; set; }
+
+        public void Create(string difficulty)
+        {
+            CreateDate = DateTime.Now;
+            Character.CreateDate = DateTime.Now;
+            Character.isPlayer = true;
+            Difficulty = difficulty;
+            Character.ImplementedSkills = new List<ImplementedSkill>();
+            Character.ImplementedStats = new List<ImplementedStat>();
+        }
     }
 }
