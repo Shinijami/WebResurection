@@ -54,6 +54,21 @@ namespace WebResurection.Migrations
             characters.ForEach(ch => context.Characters.AddOrUpdate(c => c.FirstName, ch));
             context.SaveChanges();
 
+            var players = new List<Player>
+            {
+                new Player { CharacterId = characters.Single(p => p.FirstName == "Shinijami").ID, Difficulty = "Hard", CreateDate = DateTime.Now.AddDays(-1) }//, ImplementedStats = implementedStats }///*, StatSheet = { new ImplementedStat(), new ImplementedStat() }, SkillSheet = { new ImplementedSkill() }*/ }
+                , new Player {  CharacterId = characters.Single(p => p.FirstName == "Numn2Nutts").ID, Difficulty = "Hard", CreateDate = DateTime.Now.AddDays(-1) }//, ImplementedStats = implementedStats2 }
+            };
+            players.ForEach(ch => context.Players.AddOrUpdate(c => c.CharacterId, ch));
+            context.SaveChanges();
+
+            var npcs = new List<NPC>
+            {
+                new NPC {  CharacterId = characters.Single(p => p.FirstName == "Levi").ID, CreateDate = DateTime.Now.AddDays(-1) }
+            };
+            npcs.ForEach(ch => context.NPCs.AddOrUpdate(c => c.CharacterId, ch));
+            context.SaveChanges();
+
             var implementedStats = new List<ImplementedStat>();
             foreach (var stat in stats)
             {
